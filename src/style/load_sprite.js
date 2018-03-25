@@ -1,6 +1,7 @@
 // @flow
 
 import { getJSON, getImage, ResourceType } from '../util/ajax';
+import config from '../util/config';
 
 import browser from '../util/browser';
 import { normalizeSpriteURL } from '../util/mapbox';
@@ -14,7 +15,7 @@ export default function(baseURL: string,
                           transformRequestCallback: RequestTransformFunction,
                           callback: Callback<{[string]: StyleImage}>) {
     let json: any, image, error;
-    const format = browser.devicePixelRatio > 1 ? '@2x' : '';
+    const format = config.DEVICE_PIXEL_RATIO > 1 ? '@2x' : '';
 
     getJSON(transformRequestCallback(normalizeSpriteURL(baseURL, format, '.json'), ResourceType.SpriteJSON), (err, data) => {
         if (!error) {

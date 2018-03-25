@@ -1,6 +1,6 @@
 // @flow
 
-import browser from '../util/browser';
+import config from '../util/config';
 
 import { mat4 } from '@mapbox/gl-matrix';
 import EXTENT from '../data/extent';
@@ -26,7 +26,7 @@ function drawDebugTile(painter, sourceCache, coord) {
     const context = painter.context;
     const gl = context.gl;
 
-    context.lineWidth.set(1 * browser.devicePixelRatio);
+    context.lineWidth.set(1 * config.DEVICE_PIXEL_RATIO);
 
     const posMatrix = coord.posMatrix;
     const program = painter.useProgram('debug');
